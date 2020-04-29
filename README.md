@@ -3,15 +3,15 @@ CTR prediction models based on spark. Easy to use and we realized most common mo
 
 The main algorithms we realized:
 
-1. LR
+- [x] LR
 
-2. FM
+- [x] FM
 
-3. XGBoost
+- [x] XGBoost
 
-4. XGBoostLR
+- [x] XGBoostLR
 
-3. XGBoostFM
+- [x] XGBoostFM
 
 # 1. java
 Java interfaces mainly used for parse and deploy the models trained by spark platform to the Online Server.
