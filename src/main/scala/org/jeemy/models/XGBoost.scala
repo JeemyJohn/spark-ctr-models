@@ -1,4 +1,4 @@
-package org.apache.jeemy.models
+package org.jeemy.models
 
 /**
  * @User: zhanghuayan

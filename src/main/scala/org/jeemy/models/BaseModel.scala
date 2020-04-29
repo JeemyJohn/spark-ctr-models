@@ -1,6 +1,7 @@
-package org.apache.jeemy.models
+package org.jeemy.models
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
+
 
 /**
  * @User: zhanghuayan
