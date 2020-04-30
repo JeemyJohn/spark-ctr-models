@@ -4,10 +4,10 @@ import org.apache.spark.sql.DataFrame
 
 /**
  * @User: zhanghuayan
- * @Date: 2020/4/29 5:45 下午
- * @DESC: Spark LR CTR预测模型实现
+ * @Date: 2020/4/29 5:06 下午
+ * @DESC: Spark XGBoostLR CTR预测模型实现
  */
-class LR extends BaseModel {
+class XGBoostLR extends BaseModel {
   /**
    * 预测函数接口
    */
@@ -21,9 +21,9 @@ class LR extends BaseModel {
    * 训练函数接口
    */
   def fit(trainData: DataFrame): BaseModel = {
-    val lr: LR = null
+    val xgbLr: XGBoostLR = null
     // TODO
-    lr
+    xgbLr
   }
 
   /**
@@ -37,8 +37,8 @@ class LR extends BaseModel {
    * 模型加载
    */
   def loadModel(modelPath: String): BaseModel = {
-    val lr: LR = null;
+    val xgbLr: XGBoostLR = null
     // TODO
-    lr
+    xgbLr
   }
 }
