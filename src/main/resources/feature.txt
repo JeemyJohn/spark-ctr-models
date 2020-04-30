@@ -1,0 +1,10 @@
+# Feature schema example
+label,         double,     other
+u_age,         int,        continuous
+u_salary,      double,     continuous
+u_gender,      string,     discrete
+u_city,        string,     discrete
+i_age,         int,        continuous
+i_salary,      double,     continuous
+i_gender,      string,     discrete
+i_city,        string,     discrete

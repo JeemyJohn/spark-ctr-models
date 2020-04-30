@@ -50,6 +50,17 @@ public class GBDTLRModel {
     }
 
     /**
+     * 批量打分预测
+     */
+    public double[] predict(double[][] features) {
+        double[] scores = new double[features.length];
+        for (int i = 0; i < features.length; i++) {
+            scores[i] = predict(features[i]);
+        }
+        return scores;
+    }
+
+    /**
      * 预测结果值
      */
     public double predict(double[] denseFeature) {
