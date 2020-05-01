@@ -25,4 +25,4 @@ Scala module trained models and save them as a specific format which java interf
 - [x] SparseVector:
 
 # 4. Example code. 
-In whole of this project, we will write a main function to show the example code of the detail usage of this class. This make you clear of it, and easy to test the functions of the class.
+Throughout the project, we will write a main function for every class to show the example code of the detail usage of them. This make you clear and easy to test the functions of the class.
