@@ -19,7 +19,10 @@ Java interfaces mainly used for parse and deploy the models trained by spark pla
 # 2. scala
 Scala module trained models and save them as a specific format which java interface can parse them for predict in Online Server.
 
-# 3. Feature Engineering
+# 3. Feature Engineering.
 - [x] FeatureConf:
 - [x] FeatureMaker:
 - [x] SparseVector:
+
+# 4. Example code. 
+In whole of this project, we will write a main function to show the example code of the detail usage of this class. This make you clear of it, and easy to test the functions of the class.
