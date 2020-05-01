@@ -44,6 +44,7 @@ class LR extends BaseModel {
     for (i <- 0 until feature.length) {
       score += feature(i) * weights(i + 1)
     }
+    score = 1.0 / (1.0 + math.exp(-score))
     score
   }
 
