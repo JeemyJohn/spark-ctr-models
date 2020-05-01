@@ -1,13 +1,13 @@
-package org.jeemy.feature
+package org.jeemy.utils
 
-import org.apache.spark.sql.types.{DoubleType, IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.types._
 
 /**
  * @User: zhanghuayan
  * @Date: 2020/4/30 6:18 下午
  * @DESC: 根据特征配置文件解析训练数据的Schema
  */
-object FeatureSchemaParser {
+object SchemaParser {
   val SCHEMA_PARTS = 3
 
   /**

@@ -4,6 +4,7 @@ import org.apache.spark.SparkConf
 import org.apache.spark.ml.feature.{QuantileDiscretizer, StringIndexer}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.storage.StorageLevel
+import org.jeemy.utils.SchemaParser
 
 /**
  * @User: zhanghuayan
@@ -23,10 +24,10 @@ object FeatureDiscretizer {
     println(dataPath + "\n\n")
 
     // 读取特征Schema
-    val schema = FeatureSchemaParser.readSchema(featureConf)
+    val schema = SchemaParser.readSchema(featureConf)
 
-    var inputCols = FeatureSchemaParser.getContinuousFeatures(featureConf)
-    var outputCols = FeatureSchemaParser.getOutputCols(inputCols)
+    var inputCols = SchemaParser.getContinuousFeatures(featureConf)
+    var outputCols = SchemaParser.getOutputCols(inputCols)
 
     println(inputCols.mkString("[", ",", "]"))
     println(outputCols.mkString("[", ",", "]"))
@@ -57,8 +58,8 @@ object FeatureDiscretizer {
 
     /** **************************  离散特征处理  *******************************/
     println("\n\n")
-    inputCols = FeatureSchemaParser.getDiscreteFeatures(featureConf)
-    outputCols = FeatureSchemaParser.getOutputCols(inputCols)
+    inputCols = SchemaParser.getDiscreteFeatures(featureConf)
+    outputCols = SchemaParser.getOutputCols(inputCols)
     for (i <- 0 until inputCols.length) {
       val indexer = new StringIndexer()
         .setInputCol(inputCols(i))

@@ -1,5 +1,5 @@
 # Spark-ctr-models
-CTR prediction models based on spark. Easy to use and we realized most common models for CTR prediction. The most difference is that we not only implement model trains，but also make it easy to deploy to the Online Server with Java interface.
+CTR prediction models based on spark. Easy to use and we realized most common models for CTR prediction. The most difference is that we not only implement model trains，but also make it easy to parse the trained models and deploy them to the Online Server with Java interface.
 
 The main algorithms we realized:
 

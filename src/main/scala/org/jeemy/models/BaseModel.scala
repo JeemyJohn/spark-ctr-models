@@ -1,6 +1,7 @@
 package org.jeemy.models
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.jeemy.utils.SchemaParser
 
 
 /**
@@ -33,4 +34,15 @@ trait BaseModel {
    * 模型加载
    */
   def loadModel(modelPath: String): BaseModel
+
+  /**
+   * 从HDFS路径读取数据
+   */
+  def readData(path: String, featureConf: String): DataFrame = {
+    // 读取数据schema
+    val schema = SchemaParser.readSchema(featureConf)
+    // 读取HDFS数据为指定schema
+    val dataDF: DataFrame = spark.read.schema(schema).csv(path)
+    dataDF
+  }
 }
