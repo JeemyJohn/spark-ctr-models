@@ -26,7 +26,7 @@ public class FeatureMaker {
             Config config = obj.toConfig();
             String name = config.getString("name");
             String type = config.getString("type");
-            List<Double> values = config.getDoubleList("values");
+            List<String> values = config.getStringList("values");
             featureConfList.add(new FeatureConf(name, type, values));
         }
     }
@@ -44,7 +44,7 @@ public class FeatureMaker {
             Config config = obj.toConfig();
             String name = config.getString("name");
             String type = config.getString("type");
-            List<Double> values = config.getDoubleList("values");
+            List<String> values = config.getStringList("values");
             featureConfList.add(new FeatureConf(name, type, values));
         }
     }
@@ -61,7 +61,7 @@ public class FeatureMaker {
         int startIndex = 0;
         for (int i = 0; i < denseFeature.length; i++) {
             FeatureConf featureConf = featureConfList.get(i);
-            size += featureConf.size;
+            size += featureConf.dimSize;
             values[i] = 1.0;
             indices[i] = startIndex + getInnerIndex(denseFeature[i], featureConf);
             startIndex = size;
@@ -71,23 +71,18 @@ public class FeatureMaker {
     }
 
     /**
-     * 获取特征OneHot编码值：离散值是值相等匹配的方式，连续值是区间匹配的方式
-     * 所有特征0号位用于存储默认值编码，所以内部编码应该等于实际匹配值加1
+     * 获取特征OneHot编码值：离散值是字典匹配，连续值是区间匹配的方式
      */
     private int getInnerIndex(double value, FeatureConf featureConf) {
         if (featureConf.type.equals(FeatureConf.DISCRETE)) {
-            for (int i = 0; i < featureConf.values.size(); i++) {
-                if (Math.abs(value - featureConf.values.get(i)) < 1e-6) {
-                    return i + 1; // 必须加1
-                }
-            }
+            return featureConf.featMap.get(value).intValue();
         } else if (featureConf.type.equals(FeatureConf.CONTINUOUS)) {
-            for (int i = 0; i < featureConf.values.size() - 1; i++) {
-                double lValue = featureConf.values.get(i);
-                double rValue = featureConf.values.get(i + 1);
+            for (int i = 0; i < featureConf.splitBins.size() - 1; i++) {
+                double lValue = featureConf.splitBins.get(i);
+                double rValue = featureConf.splitBins.get(i + 1);
                 // 分桶区间前闭后开
                 if (value >= lValue && value < rValue) {
-                    return i + 1; // 必须加1
+                    return i;
                 }
             }
         }

@@ -36,7 +36,6 @@ object FeatureDiscretizer {
     val dataDF = spark.read.schema(schema).csv(dataPath)
       .drop("deal_type", "lid", "rank")
       .persist(StorageLevel.MEMORY_AND_DISK)
-    dataDF.show(10)
 
     /** **************************  连续特征处理  *******************************/
 
@@ -53,7 +52,7 @@ object FeatureDiscretizer {
     println("\n\n")
     for (i <- 0 until splitsArray.length) {
       val splits = splitsArray(i)
-      println(inputCols(i) + ":\t" + splits.mkString("[", ",", "]"))
+      println(inputCols(i) + ":\n\t\t" + splits.mkString("[", ",", "]") + "\n")
     }
 
     /** **************************  离散特征处理  *******************************/
@@ -79,7 +78,7 @@ object FeatureDiscretizer {
           val dstVal = row.getDouble(1)
           srcVal + ":" + dstVal
       }.mkString("[", ",", "]")
-      println(inputCols(i) + ":\t" + ansMap + "\n")
+      println(inputCols(i) + ":\n\t\t" + ansMap + "\n")
     }
   }
 }

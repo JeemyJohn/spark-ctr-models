@@ -3,7 +3,6 @@ package org.jeemy.models
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.jeemy.utils.SchemaParser
 
-
 /**
  * @User: zhanghuayan
  * @Date: 2020/4/29 5:06 下午
