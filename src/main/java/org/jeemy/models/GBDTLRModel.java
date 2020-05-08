@@ -6,6 +6,7 @@ import org.jeemy.feature.FeatureConf;
 import org.jeemy.feature.FeatureMaker;
 import org.jeemy.feature.SparseVector;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -35,10 +36,10 @@ public class GBDTLRModel {
      */
     public GBDTLRModel(String modelConf) {
         // 加载配置文件
-        Config conf = ConfigFactory.load(modelConf);
+        Config conf = ConfigFactory.parseFile(new File(modelConf));
 
         // 解析LR模型
-        List<Double> lrWeights = conf.getDoubleList("lr_weights");
+        List<Double> lrWeights = conf.getDoubleList("lr_model_weights");
         lrParser = new LRParser(lrWeights);
 
         // 解析XGBoost模型

@@ -4,6 +4,7 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class FeatureMaker {
      */
     public FeatureMaker(String confFile) {
         // 加载配置文件
-        Config conf = ConfigFactory.load(confFile);
+        Config conf = ConfigFactory.parseFile(new File(confFile));
         // 获取特征对象数组
         List<? extends ConfigObject> objs = conf.getObjectList("feature");
         // 依次解析各个特征
@@ -62,8 +63,8 @@ public class FeatureMaker {
         for (int i = 0; i < denseFeature.length; i++) {
             FeatureConf featureConf = featureConfList.get(i);
             size += featureConf.dimSize;
-            values[i] = 1.0;
             indices[i] = startIndex + getInnerIndex(denseFeature[i], featureConf);
+            values[i] = 1.0;
             startIndex = size;
         }
 
@@ -94,13 +95,13 @@ public class FeatureMaker {
      * 类功能测试
      */
     public static void main(String[] args) {
-        FeatureMaker featureMaker = new FeatureMaker("model.conf");
+        FeatureMaker featureMaker = new FeatureMaker("/Users/jeemy/IdeaProjects/spark-ctr-models/src/main/resources/model.conf");
 
-        double[] feature = {2.0, 5.0};
+        double[] feature = {2.0, 34.0};
         SparseVector vector = featureMaker.trans2SparseVector(feature);
         System.out.println(vector.toString());
 
-        feature = new double[]{-2.0, -5.0};
+        feature = new double[]{-2.0, 7.0};
         vector = featureMaker.trans2SparseVector(feature);
         System.out.println(vector.toString());
     }

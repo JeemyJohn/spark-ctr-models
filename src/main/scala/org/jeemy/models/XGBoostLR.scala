@@ -1,5 +1,7 @@
 package org.jeemy.models
 
+import ml.dmlc.xgboost4j.scala.spark.XGBoostClassificationModel
+import org.apache.spark.ml.classification.LogisticRegressionModel
 import org.apache.spark.sql.DataFrame
 
 /**
@@ -8,6 +10,9 @@ import org.apache.spark.sql.DataFrame
  * @DESC: Spark XGBoostLR CTR预测模型实现
  */
 class XGBoostLR extends BaseModel {
+  val xgbModel: XGBoostClassificationModel = null
+  val lrModel: LogisticRegressionModel = null
+
   /**
    * 预测函数接口
    */
@@ -22,7 +27,7 @@ class XGBoostLR extends BaseModel {
    */
   def fit(trainData: DataFrame): BaseModel = {
     val xgbLr: XGBoostLR = null
-    // TODO
+
     xgbLr
   }
 
